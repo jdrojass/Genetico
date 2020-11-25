@@ -1,0 +1,59 @@
+{
+    "terminal.integrated.automationShell.linux": "",
+    "editor.fontFamily": "FiraCode-Retina",
+    "emmet.includeLanguages": {
+        "html-eex": "html"
+    },
+    "files.associations": {
+        "*.eex": "html-eex",
+        "*.leex": "html-eex"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontLigatures": true,
+    "elixirLinter.useStrict": true,
+    "elixirLinter.defaultSeverity": 10,
+    "elixirLinter.consistencySeverity": 10,
+    "elixirLinter.refactoringSeverity": 10,
+    "elixirLinter.readabilitySeverity": 10,
+    "elixirLinter.warningsSeverity": 10,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "editor.formatOnType": true,
+    "editor.wordBasedSuggestions": true,
+    "editor.trimAutoWhitespace": true,
+    "editor.acceptSuggestionOnEnter": "on",
+    "explorer.confirmDelete": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "beautify.language": {
+        "js": {
+            "type": [
+                "javascript",
+                "json",
+                "jsonc"
+            ],
+            "filename": [
+                ".jshintrc",
+                ".jsbeautifyrc"
+            ]
+        },
+        "css": [
+            "css",
+            "less",
+            "scss"
+        ],
+        "html": [
+            "htm",
+            "html",
+            "html-eex"
+        ]
+    },
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "[javascript]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[html-eex]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    }
+}
