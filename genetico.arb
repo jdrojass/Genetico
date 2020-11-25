@@ -1,172 +1,155 @@
-class condiciones
-    filas = 10;
-    columnas = 5;
-    nganadores = 5;
+class Condiciones
+	filas = 10;
+	columnas = 5;
+	nganadores = 5;
+end
 
+class Genetico < Condiciones
+	filas = 10
+	columnas = 5
+	nganadores = 5
+	poblacion = [[filas],[columnas]]
+	poblacionTem = [[filas],[columnas]]
+	parejas = [filas]
+	ganadores = [nganadores]
+	sumatoria = 0
+	
+	def inciarPoblacion (poblacion)
+		puts "***********************************************************"
+		puts "********************Iniciar Poblacion***********************"
+		puts "***********************************************************"
+		individuo = ""
+		ri = rand(0..1)
+		ro = rand(0..1)
+		ra = rand(0..1)
+		for i in (0..parejas.length) do 
+			for j in (0..parejas.length-4) do 
+				individuo = ""
+				individuo = ri.to_i + ro.to_i + ra.to_i + ra.to_i + ra.to_i
 
-class genetico < condiciones
-    filas = 10
-    columnas = 5
-    nganadores = 5
-    poblacion = [[filas],[columnas]]
-    poblacionTem = [[filas],[columnas]]
-    parejas = [filas]
-    ganadores = [nganadores]
-    sumatoria = 0
-    
-    def inciarPoblacion (poblacion)
-        puts "***********************************************************"
-        puts "********************Iniciar Poblacion***********************"
-        puts "***********************************************************"
-        individuo = ""
-        ri = rand(0..1)
-        ro = rand(0..1)
-        ra = rand(0..1)
-        for i in (0..parejas.length) do 
-            for j in (0..parejas.length-4) do 
-                individuo = ""
-                individuo = ri.to_i + ro.to_i + ra.to_i + ra.to_i + ra.to_i
+				poblacion[[i],[0]] = "" + i
+				poblacion[[i],[1]] = individuo
 
-                poblacion[[i],[0]] = "" + i
-                poblacion[[i],[1]] = individuo
+			end
+			poblacion[[i],[0]] = "" + i
+			poblacion[[i],[1]] = individuo
+		end
+	end
 
-            end
-            poblacion[[i],[0]] = "" + i
-            poblacion[[i],[1]] = individuo
-        end
-    end
+	def convertir_individuo (poblacion)
+		valor = 0
+		for i in (0..parejas.length) do
+			valor = 0
+			valores[] = Poblacion[i][1].split(";")
+			indice = 0
+			for j in (0..valores.length) do
+				#parsedouble en ruby valor=valor+ (Double.parseDouble(valores[k])*Math.pow(2,indice));
+				indice += 1
+			end
+		Poblacion[i][2] = "" + valor
+		sumatoria = valor
+	end
 
-    
+	def calidad_individuo (poblacion)
+	   ' double mayor=Double.parseDouble(Poblacion[0][2]);  
+	   double valor=0;'
+		mayor = poblacion.to_f
+		valor = 0
+		for i in (0..parejas.length) do 
+			# funcion_fx
+			poblacion [i][3] = "" + valor
+			if mayor < valor
+				mayor = valor
+			end
+		end
+		puts "********************Mejor Adaptado*************************"
+		puts "************************* + #{mayor} + ****************************"  
+		return mayor     
+	end
 
-    
-    def convertir_individuo (poblacion) do
-        valor = 0
-        for i in (0..parejas.length)
-            valor = 0
-            valores[] = Poblacion[i][1].split(";")
-            indice = 0
-            for j in (0..valores.length) do
-                #parsedouble en ruby valor=valor+ (Double.parseDouble(valores[k])*Math.pow(2,indice));
-                indice += 1
-            end
-        Poblacion[i][2] = "" + valor
-        sumatoria = valor
-    end
+	def combinacion_mutacion (poblacion)
 
+	end
 
+	def copiarse (poblacion , poblacionTem)
+		puts "********************Copiarse*******************************"
+		indice = 0
+		t = 0
+		for i in (0..ganadores.length) do
+			ganador = ganadores[i].to_i
+			poblacionTem[indice][0] = "" + (i+t)
+			poblacionTem[indice+1][0] = "" + (i+1+t)
+			for j in (1..columnas) do
+				poblacionTem[indice][f] = poblacion[ganador][f]          
+				poblacionTem[indice+1][f] = poblacion[ganador][f]
+			end  
+			indice += 2
+			t += 1  
+		end
+		for i in (0..parejas.length) do
+			poblacion[i][0] = poblacionTem[i][0]
+			poblacion[i][1] = poblacionTem[i][1] 
+		end   
+	end
 
-    def calidad_individuo (poblacion)
-       ' double mayor=Double.parseDouble(Poblacion[0][2]);  
-       double valor=0;'
-        mayor = poblacion.to_f
-        valor = 0
-        for i in (0..parejas.length) do 
-            # funcion_fx
-            poblacion [i][3] = "" + valor
-            if mayor < valor
-                mayor = valor
-            end
-        end
-        puts "********************Mejor Adaptado*************************"
-        puts "#{*************************} + #{mayor} + #{****************************}"  
-        return mayor     
-    end
+	def verGanadores (ganadores)
+		puts "**************Ganadores********************************"
+		gano = 0
+		for i in (0..ganadores.length) do 
+			gano = ganadores[i].to_i
+			puts "#{"["} #{poblacion[gano][0]} #{"]"} #{"["} #{poblacion[gano][1]} #{"]"} #{"["} #{poblacion[gano][2]} #{"]"} #{"["} #{poblacion[gano][3]} #{"]"}"
+		end
+	end
+	
+	def torneo(poblacion)
+		puts "***********************************************************"
+		puts "********************Torneo*********************************"
+		desempeñoA = ""
+		parejaA = ""
+		desempeñoB = ""
+		indP = 0
+		for i in (0..parejas.length) do 
+			desempenoA = poblacion[i][3];
+			parejaA = parejas[i];          
+			desempenoB = poblacion[parejaA.to_i][3];
+			puts "#{"["} #{poblacion[i][0]} #{"]"} #{"["} #{poblacion[i][1]} #{"]"} #{"["} #{poblacion[i][2]} #{"]"} #{"["} #{poblacion[i][3]} #{"]"}"
+			if desempenoA.to_f >= desempenoB.to_f
+				ganadores[indP] = poblacion[i][0]
+			else
+				ganadores[indP] = parejaA
+			end
+			indP +=1
+		end
+	end
 
+	def seleccion_parejas (poblacion)
+		puts "***********************************************************"
+		puts "********************Seleccion Parejas**********************"
+		aux = poblacion[1][0]
+		for i in (0..parejas.length) do
+			parejas[(parejas.length-1)-i]=poblacion[i][0]
+		end
+	end
 
+	def adaptilidad (poblacion ,sumatoria)
+		for i in (0..parejas.length) do 
+			poblacion[i][4] = "" + (poblacion[i][2].to_i/sumatoria)
+		end
+	end
 
-    def combinacion_mutacion (poblacion)
-
-    end
-
-
-
-    def copiarse (poblacion , poblacionTem)
-        puts "********************Copiarse*******************************"
-        indice = 0
-        t = 0
-        for i in (0..ganadores.length) do
-            ganador = ganadores[i].to_i
-            poblacionTem[indice][0] = "" + (i+t)
-            poblacionTem[indice+1][0] = "" + (i+1+t)
-            for j in (1..columnas) do
-                poblacionTem[indice][f] = poblacion[ganador][f]          
-                poblacionTem[indice+1][f] = poblacion[ganador][f]
-            end  
-            indice += 2
-            t += 1  
-        end
-        for i in (0..parejas.length) do
-            poblacion[i][0] = poblacionTem[i][0]
-            poblacion[i][1] = poblacionTem[i][1] 
-        end   
-    end
-
-
-    def verGanadores (ganadores)
-        puts "**************Ganadores********************************"
-        gano = 0
-        for i in (0..ganadores.length) do 
-            gano = ganadores[i].to_i
-            puts "#{"["} #{poblacion[gano][0]} #{"]"} #{"["} #{poblacion[gano][1]} #{"]"} #{"["} #{poblacion[gano][2]} #{"]"} #{"["} #{poblacion[gano][3]} #{"]"}"
-        end
-    end
-    
-    
-    def torneo(poblacion)
-        puts "***********************************************************"
-        puts "********************Torneo*********************************"
-        desempeñoA = ""
-        parejaA = ""
-        desempeñoB = ""
-        indP = 0
-        for i in (0..parejas.length) do 
-            desempenoA = poblacion[i][3];
-            parejaA = parejas[i];          
-            desempenoB = poblacion[parejaA.to_i][3];
-            puts "#{"["} #{poblacion[i][0]} #{"]"} #{"["} #{poblacion[i][1]} #{"]"} #{"["} #{poblacion[i][2]} #{"]"} #{"["} #{poblacion[i][3]} #{"]"}"
-            if desempenoA.to_f >= desempenoB.to_f
-                ganadores[indP] = poblacion[i][0]
-            else
-                ganadores[indP] = parejaA
-            end
-            indP +=1
-        end
-    end
-
-
-
-    def seleccion_parejas (poblacion)
-        puts "***********************************************************"
-        puts "********************Seleccion Parejas**********************"
-        aux = poblacion[1][0]
-        for i in (0..parejas.length) do
-            parejas[(parejas.length-1)-i]=poblacion[i][0]
-        end
-    end
-
-
-
-    def adaptilidad (poblacion ,sumatoria)
-        for i in (0..parejas.length) do 
-            poblacion[i][4] = "" + (poblacion[i][2].to_i)/sumatoria)
-    end
-
-
-
-    def verPoblacion (poblacion , pareja)
-        puts "********************Pablacion Actual***********************"
-        cadena = ""
-        for i in (0..filas) do
-            for j in (0..columnas) do
-                cadena += "#{"["} #{poblacion[i][k]} #{"]"}"
-            end
-            if pareja 
-                cadena += "#{"pareja"} #{parejas[i]} #{"\n"}"
-            else
-                cadena += "#{""} #{"\n"}"
-            end
-        end
-        puts cadena
-    end
-
+	def verPoblacion (poblacion , pareja)
+		puts "********************Pablacion Actual***********************"
+		cadena = ""
+		for i in (0..filas) do
+			for j in (0..columnas) do
+				cadena += "#{"["} #{poblacion[i][k]} #{"]"}"
+			end
+			if pareja 
+				cadena += "#{"pareja"} #{parejas[i]} #{"\n"}"
+			else
+				cadena += "#{""} #{"\n"}"
+			end
+		end
+		puts cadena
+	end
 end
