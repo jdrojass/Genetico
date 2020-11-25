@@ -98,7 +98,8 @@ public class Geneticos {
         int puntocruce=0;
         String [] IndividuoA;
         String [] IndividuoB;    
-        String ParejaA="";
+		String ParejaA="";
+		
         //se hace sólo hasta la mitad porque cada uno tiene una pareja
         for(int i=0;i<Parejas.length/2;i++){        
            IndividuoA=Poblacion[i][1].split(",");

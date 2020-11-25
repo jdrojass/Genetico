@@ -67,7 +67,23 @@ class Genetico < Condiciones
 		return mayor     
 	end
 
-	def combinacion_mutacion (poblacion)
+	def combinacion_mutacion (poblacion , poblacionTem)
+		puts "********************Combiancion y Mutacion*****************"
+		puts "***********************************************************"
+		
+		puntocruce = 0
+		individuoA = []
+		individuoB = []
+		parejaA = ""
+		for i in (0..parejas.length/2) do
+			ri = rand(0..3)
+			individuoA = poblacion[i][1].split(",")
+			parejaA = parejas[i]
+			cadAdn = ""
+			individuoB = poblacion[parejaA.to_i][1].split(",")
+			puntocruce = ri
+			puts "Punto cruce [+ #{puntocruce} +][+ #{Poblacion[i][0]} +][+ #{Poblacion[i][1]}+][Cruzado con] [+ #{Poblacion[ParejaA.to_i][0]}+][+Poblacion[ParejaA.to_i][1]+]"
+		end
 
 	end
 
