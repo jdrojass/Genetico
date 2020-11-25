@@ -82,7 +82,8 @@ class Genetico < Condiciones
 			cadAdn = ""
 			individuoB = poblacion[parejaA.to_i][1].split(",")
 			puntocruce = ri
-			puts "Punto cruce [+ #{puntocruce} +][+ #{Poblacion[i][0]} +][+ #{Poblacion[i][1]}+][Cruzado con] [+ #{Poblacion[ParejaA.to_i][0]}+][+Poblacion[ParejaA.to_i][1]+]"
+
+			puts "Punto cruce [+ #{puntocruce} +][+ #{Poblacion[i][0]} +]\n[+ #{Poblacion[i][1]}+][Cruzado con] [+ #{Poblacion[ParejaA.to_i][0]}+]\n[+ #{Poblacion[ParejaA.to_i][1]}+]"
 		end
 
 	end
