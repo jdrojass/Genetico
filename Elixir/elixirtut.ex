@@ -1,9 +1,15 @@
 defmodule Main do
+  """---------------Funciones interactivas con usuario------------------------------------------
+  """
+
+
 
   def saludar_usuario do
 
 
     obtener_usuario() |> formato_mensaje|> mostrar_mensaje
+
+
 
 
 
@@ -44,14 +50,28 @@ defmodule Main do
   end
 
 
+  """---------------Funciones necesarias para crear y escribir documentos------------------------------------------
+  """
+  def get_text(text_file) do
+    File.read!(text_file)
+  end
 
 
+  def escribirnota (contenido ) do
 
-  def fitness (poblacion[i][2]) do
+    File.write("resultadosX.txt",contenido)
+  end
 
-    resultado = población[i][2]*[i][2];
-    IO.puts resultado
+  """--------------------------------------------------------------------------------------------------------------
+  """
 
+  """---------------Funciones del código genético------------------------------------------
+  """
+
+
+  def fitness (xvalue) do
+
+  Enum.map(xvalue,fn x -> x * x end)
 
 
 
@@ -77,6 +97,47 @@ defmodule Main do
 
 
   end
+
+  """--------------------------------------------------------------------------------------------------------------
+  """
+  """---------------Función que capta datos de un txt y los transforma para crear un nuevo txt con esos datos------------------------------------------
+  """
+
+
+
+
+
+  def run2() do
+
+  get_text("valoresx.txt")|>String.split|>Enum.map(fn n -> {v, _} = Float.parse(n); v end)|>fitness|> Enum.map_join " ,", &(Float.to_string(&1))|>String.split
+
+
+  end
+
+  """--------------------------------------------------------------------------------------------------------------
+  """
+
+
+
+
+  """---------------MAIN------------------------------------------
+  """
+
+  def rin()do
+    escribirnota(run2())
+
+  end
+
+
+
+  """--------------------------------------------------------------------------------------------------------------
+  """
+
+
+
+
+
+
 
 
 
